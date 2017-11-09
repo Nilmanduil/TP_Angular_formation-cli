@@ -12,6 +12,7 @@ export class InterpolateComponent implements OnInit {
   prenom = 'Test prénom';
   nom = 'Test nom';
   formation: Formation = new Formation({nom: "Angular", description: 'Formation pour DTA Ingénierie'});
+  formationJS: Formation;
 
   constructor() { }
 
@@ -20,7 +21,9 @@ export class InterpolateComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    setTimeout(() => {
+      this.formationJS= new Formation({nom: 'Module JavaScript', description: "Formation très utile"});
+    }, 3000);
   }
 
 }
