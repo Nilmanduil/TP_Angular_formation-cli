@@ -1,10 +1,11 @@
+<!--
 <p>
   {{prenom}}
 </p>
 <p>
   {{nom}}
 </p>
-<p>
+<p [style.color]="nameColor">
   Full name : {{getFullname()}}
 </p>
 <p>
@@ -12,3 +13,45 @@
 </p>
 
 <p>Formation JS : {{formationJS?.nom}}</p>
+
+<p id="myText" [hidden]="textHidden" (mouseover)="mouseOnText()" (mouseout)="mouseOutOfText()">
+  Mon petit oiseau a pris sa volée
+</p>
+
+<p>
+  <button (click)="toggleMyText()">{{buttonLabel}}</button>
+</p>
+
+<div>
+  <input type="text"
+         #customVariable
+         placeholder="Saisir une valeur">
+  <div>test variable locale : {{customVariable.value}}</div>
+</div>
+
+<div>
+  <button (click)="customVariable.focus()">Focus the input</button>
+</div>
+
+<p *ngIf="!textHidden">
+  Formation : Description
+</p>
+
+<p>
+  <button (click)="toggleMyText()">{{buttonLabel}}</button>
+</p>
+-->
+
+<div [ngSwitch]="formations.length">
+  <p *ngSwitchCase="0">Aucune formation disponible</p>
+  <p *ngSwitchCase="1">Une formation disponible : </p>
+  <p *ngSwitchDefault>Formations disponibles :</p>
+</div>
+
+<ul>
+  <li *ngFor="let formation of formations; index as i; first as f; last as l, odd as o">
+    <!--<p [ngStyle]="{color: getColorByElement(f, l), background: getBackgroundByElement(o)}">{{i}} - {{ formation.nom }}</p>-->
+    <p [ngClass]="{textRed: f, textGreen: l, backGrey: o}">{{i}} - {{ formation.nom }} ({{formation.prix | currency:'EUR':true}}) du {{formation.dateDebut | date:'dd/MM/yyyy'}} au {{formation.dateFin | date:'dd/MM/yyyy'}}</p>
+  </li>
+</ul>
+
