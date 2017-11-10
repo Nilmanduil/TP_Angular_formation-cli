@@ -50,8 +50,9 @@
 
 <ul>
   <li *ngFor="let formation of formations; index as i; first as f; last as l, odd as o">
-    <!--<p [ngStyle]="{color: getColorByElement(f, l), background: getBackgroundByElement(o)}">{{i}} - {{ formation.nom }}</p>-->
-    <p [ngClass]="{textRed: f, textGreen: l, backGrey: o}">{{i}} - {{ formation.nom }} ({{formation.prix | currency:'EUR':true}}) du {{formation.dateDebut | date:'dd/MM/yyyy'}} au {{formation.dateFin | date:'dd/MM/yyyy'}}</p>
+    <!--<p [ngStyle]="{color: getColorByElement(f, l), background: getBackgroundByElement(o)}">{{i}} - {{ formation.nom }}</p>
+    <p [ngClass]="{textRed: f, textGreen: l, backGrey: o}">{{i}} - {{ formation.nom }} ({{formation.prix | currency:'EUR':true}}) du {{formation.dateDebut | date:'dd/MM/yyyy'}} au {{formation.dateFin | date:'dd/MM/yyyy'}}</p>-->
+    <app-formation-item [formation]="formation" (formationSelected)="handleFormationSelected($event)"></app-formation-item>
   </li>
 </ul>
 

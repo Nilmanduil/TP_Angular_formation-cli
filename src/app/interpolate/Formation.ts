@@ -12,4 +12,7 @@ export default class Formation {
     this.dateDebut = (dateDebut ? dateDebut : "01/01/1970");
     this.dateFin = (dateFin ? dateFin : "01/01/1970");
   }
+  toString(): string {
+    return this.nom + " (" + this.prix + "€)" + " : " + this.description + "\n" + this.dateDebut + " -> " + this.dateFin;
+  }
 }

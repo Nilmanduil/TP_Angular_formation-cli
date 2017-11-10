@@ -68,4 +68,8 @@ export class InterpolateComponent implements OnInit {
   getBackgroundByElement(odd): string {
     return (odd ? "grey" : "white");
   }
+
+  handleFormationSelected(formation) {
+    alert('Formation selected :\n\n' + formation);
+  }
 }
